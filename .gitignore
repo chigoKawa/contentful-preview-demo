@@ -30,5 +30,12 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# secrets
+.contentful.json
+.env*
+!.env.example
+.env
+*.config.js
+
 # vercel
 .vercel
