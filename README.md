@@ -3,9 +3,11 @@
 ## rough sketch ##
 > step 1 npm run install  
 > Step 2 npm run setup - answer questions  
-> step 3 npm run dev
-> step 4 open http://localhost:9009/ on your browser
-> step 5 configure preview on web app like so; http://localhost:9009/api/preview?secret=the-secret-you-provided-earlier&slug={entry.fields.slug}
+> step 3 npm run dev  
+
+> step 4 open http://localhost:9009/ on your browser    
+
+> step 5 configure preview on web app like so; http://localhost:9009/api/preview?secret=the-secret-you-provided-earlier&slug={entry.fields.slug}  
 
 
 ## Preview
