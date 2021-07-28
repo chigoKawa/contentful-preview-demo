@@ -10,11 +10,11 @@ let advancedFormat = require("dayjs/plugin/advancedFormat");
 dayjs.extend(advancedFormat);
 
 export default function Home(props) {
-  console.log("PAGES", props);
+ 
   const allPosts = _.get(props, "allPosts");
   const preview = _.get(props, "preview");
   const heroPost = _.get(allPosts, "[0]");
-  const morePosts = allPosts.slice(1);
+  const morePosts = Array.isArray(allPosts) ? allPosts.slice(1) : {} ;
 
   const date = _.get(heroPost, "fields.date");
   const title = _.get(heroPost, "fields.title");

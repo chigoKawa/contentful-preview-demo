@@ -4,18 +4,17 @@ import _ from "lodash"
 
 const myLoader = ({ src, width, quality }) => {
     return `https:${src}`
-  }
+}
 const CoverImage = (props) => {
-    const title = _.get(props, "title")
-    const url = _.get(props, "url")
-    const slug = _.get(props, "slug")
-    const externalUrl = _.get(props, "externalUrl")
-    const image = (
-        <Image
-        loader={myLoader}
-           width={2000}
-           height={1000}
-           alt={`Cover Image for ${title}`}
+        const title = _.get(props, "title")
+        const url = _.get(props, "url")
+        const slug = _.get(props, "slug")
+        const externalUrl = _.get(props, "externalUrl")
+        const image = ( <
+                Image loader = { myLoader }
+                width = { 2000 }
+                height = { 1000 }
+                alt = { `${title ? `Cover Image for ${title}` : 'Cover Image Probably Not Found'}`}
            className="shadow hover:shadow-lg transition-all duration-75"
            src={url}
        />

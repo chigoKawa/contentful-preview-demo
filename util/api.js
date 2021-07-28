@@ -46,7 +46,7 @@ export const getAllLocales = async () => {
 export const getAllPostsForHome = async (preview) => {
   const options = getOptions(preview);
   const contentfulClient = contentful.createClient(options);
-
+  
   let posts = await contentfulClient
     .getEntries({
       content_type: "post",
@@ -54,6 +54,7 @@ export const getAllPostsForHome = async (preview) => {
       // "fields.slug": "post"
     })
     .then((entries) => {
+        console.log("PAGES", entries);
       let dataType = _.get(entries, "sys.type");
       let items = _.get(entries, "items");
 
