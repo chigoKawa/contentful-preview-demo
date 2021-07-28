@@ -48,7 +48,7 @@ const questions = [
   },
   {
     name: "previewSecret",
-    message: "A secret word fo Content Preview!",
+    message: "A secret word for Content Preview!",
   },
   {
     name: "managementToken",
@@ -79,7 +79,7 @@ inquirer.prompt(questions).then((answers) => {
       `delivery_token: '${accessToken}',`,
       `preview_token: '${previewToken}',`,
       `previewSecret: '${previewSecret}',`,
-      `environment: 'master'`,
+      `environment: 'demo'`,
       `}`,
     ].join("\n") + "\n";
 
@@ -91,29 +91,41 @@ inquirer.prompt(questions).then((answers) => {
   });
   return {spaceId, managementToken}
 }).then((managementConfig)=>{
-    // const [spaceId, managementToken] = managementConfig
-    const spaceId = "3cgdpp6k1aen"
-    const managementToken ="CFPAT-X01RIboCgGxnevUPq9mpR7wbrDc3YvMkDUbzCoqSdEg"
+    const spaceId = managementConfig.spaceId ? managementConfig.spaceId : ""
+    const managementToken = managementConfig.managementToken ? managementConfig.managementToken : ""
+
     console.log(managementConfig);
-    spaceImport({ spaceId: spaceId, managementToken: managementToken, content: exportFile })
-    .then(() => {
-    const client = contentful.createClient({
-      accessToken: managementToken
-    })
-    client.getSpace(spaceId)
-    // .then((space) => space.createEnvironmentWithId('demo', {name: 'Demo'}))
-    // .then((environment) => console.log('Demo environment created'))
-    .then((_, error) => {
-      console.log(
-        `All set! Make sure to give your API key access to your new demo environment. You can now run ${chalk.yellow(
-          'npm run dev'
-        )} and bring up the app in a browser ${chalk.yellow(
-          'http://localhost:8080'
-        )} .`
-      )
-    })
-    .catch(console.error)
-  })
+    if(spaceId && managementToken){
+        spaceImport({ spaceId: spaceId, managementToken: managementToken, content: exportFile })
+        .then(() => {
+        const client = contentful.createClient({
+          accessToken: managementToken
+        })
+        client.getSpace(spaceId)
+        .then((space) => space.createEnvironmentWithId('demo', {name: 'demo'}))
+        .then((environment) => console.log('Demo environment created'))
+        .then((_, error) => {
+          console.log(
+            `All set! Make sure to give your API key access to your new demo environment. You can now run ${chalk.yellow(
+              'npm run dev'
+            )} and bring up the app in a browser ${chalk.yellow(
+              'http://localhost:8080'
+            )} .`
+          )
+        })
+        .catch(console.error)
+      })
+
+    }else{
+        console.log(
+            `Missing Managemet token! '
+            )} Please Try Again ${chalk.red(
+              'ERROR'
+            )} .`
+          )
+
+    }
+  
     
    
 });
