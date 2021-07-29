@@ -101,7 +101,7 @@ inquirer
       ? managementConfig.accessToken
       : "";
 
-    console.log(managementConfig);
+    // console.log(managementConfig);
     if (spaceId && managementToken) {
       spaceImport({
         spaceId: spaceId,
@@ -118,11 +118,7 @@ inquirer
             space
               .createEnvironmentWithId("demo", { name: "demo" })
               .then((environment) => {
-                // console.log("Demo environment created", environment);
-              })
-              .catch((err1) => console.log("Error Creating Environment", err1));
-
-            // add demo environment to API key
+                       // add demo environment to API key
             let keyID = "";
             space
               .getApiKeys()
@@ -142,8 +138,13 @@ inquirer
              
                 if (keyID) {
                   space.getApiKey(keyID).then((apiKey) => {
+                    //   console.log("apiKey",apiKey)
                    
                     let currentEnvironments = apiKey.environments;
+                    if(!currentEnvironments){
+                        currentEnvironments =[];
+                        
+                    }
                     currentEnvironments.push({
                       sys: {
                         id: "demo",
@@ -159,6 +160,11 @@ inquirer
                 }
               })
               .catch((err0) => console.log(err0));
+                // console.log("Demo environment created", environment);
+              })
+              .catch((err1) => console.log("Error Creating Environment", err1));
+
+       
           })
 
           .then((_, error) => {
