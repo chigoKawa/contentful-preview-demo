@@ -27,11 +27,7 @@ const MorePosts = (props) => {
               let postDate = dayjs(date).format(" dddd Do MMMM, YYYY");
 
               return (
-                <Link key={itemKey} href={`/posts/${slug}`}>
-                  <div className="mb-4  md:mr-4 cursor-pointer" key={itemKey}>
-                    <PostPreview date={postDate} post={post} />{" "}
-                  </div>{" "}
-                </Link>
+                <Link key={itemKey} href={`/posts/${slug}`}><div className="mb-4  md:mr-4 cursor-pointer" key={itemKey}><PostPreview date={postDate} post={post} />{" "}</div></Link>
               );
             })
           : ""}{" "}

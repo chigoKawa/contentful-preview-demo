@@ -14,6 +14,7 @@ const CoverImage = (props) => {
                 Image loader = { myLoader }
                 width = { 2000 }
                 height = { 1000 }
+                unoptimized = { true }
                 alt = { `${title ? `Cover Image for ${title}` : 'Cover Image Probably Not Found'}`}
            className="shadow hover:shadow-lg transition-all duration-75"
            src={url}

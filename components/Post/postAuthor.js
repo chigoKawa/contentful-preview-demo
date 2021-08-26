@@ -16,7 +16,7 @@ const PostAuthor = (props) => {
             layout="fill"
             className="rounded-full"
             alt={author}
-            noOptimization
+            unoptimized={true}
           />
         ) : (
           ""

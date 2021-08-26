@@ -10,7 +10,7 @@ const MainNav = () => {
       <div className="bg-blue-200 w-full">
         <div className="flex flex-row px-4 md:px-20 lg:px-40 py-10">
           <div className="float-left w-full font-bold text-xl">
-            <Link href="/">Preview Demo. </Link>{" "}
+            <Link href="/">Preview Demo.</Link>{" "}
           </div>{" "}
           <div className="float-right flex flex-row items-center">
             <span className={linkClassname}> link 1 </span>{" "}
